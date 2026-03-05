@@ -9,7 +9,7 @@ export async function fetchPortfolio(address: string, signal?: AbortSignal): Pro
   })
 
   if (!res.ok) {
-    const body = await res.json().catch(() => ({}))
+    const body = await res.json().catch(() => ({})) as any;
     throw new Error(body?.message ?? `Request failed: HTTP ${res.status}`)
   }
 
