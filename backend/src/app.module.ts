@@ -15,17 +15,23 @@ import { PortfolioModule } from './portfolio/portfolio.module';
     TypeOrmModule.forRootAsync({
       imports: [ConfigModule],
       inject: [ConfigService],
-      useFactory: (config: ConfigService) => ({
-        type: 'postgres',
-        host: config.get<string>('DB_HOST', 'localhost'),
-        port: config.get<number>('DB_PORT', 5432),
-        username: config.get<string>('DB_USERNAME', 'postgres'),
-        password: config.get<string>('DB_PASSWORD', 'postgres'),
-        database: config.get<string>('DB_NAME', 'portfolio-db'),
-        entities: [Coin, CoinPriceHistory],
-        synchronize: false,
-        logging: ['error'],
-      }),
+      useFactory: (config: ConfigService) => {
+        const isSsl = config.get<string>('DB_SSL') === 'true';
+        return {
+          type: 'postgres',
+          host: config.get<string>('DB_HOST', 'localhost'),
+          port: config.get<number>('DB_PORT', 5432),
+          username: config.get<string>('DB_USERNAME', 'postgres'),
+          password: config.get<string>('DB_PASSWORD', 'postgres'),
+          database: config.get<string>('DB_NAME', 'portfolio-db'),
+          entities: [Coin, CoinPriceHistory],
+          synchronize: false,
+          logging: ['error'],
+          ...(isSsl && {
+            ssl: { rejectUnauthorized: false },
+          }),
+        };
+      },
     }),
 
     PortfolioModule,
