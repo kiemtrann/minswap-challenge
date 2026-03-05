@@ -49,7 +49,7 @@ export function AddressInput({ onSearch, loading }: AddressInputProps) {
               id="lookup-btn"
               disabled={loading || !value.trim()}
               className={twMerge(
-                "flex items-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200",
+                "flex min-w-[120px] items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200",
                 "bg-sky-500 text-white hover:bg-sky-400 active:scale-95",
                 "disabled:cursor-not-allowed disabled:opacity-40",
               )}
