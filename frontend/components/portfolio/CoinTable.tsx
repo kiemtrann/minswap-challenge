@@ -1,7 +1,7 @@
 "use client"
 
-import * as React from "react"
 import * as Tooltip from "@radix-ui/react-tooltip"
+import * as React from "react"
 import type { CoinPortfolio } from "app/portfolio/types"
 import { PriceChange } from "./PriceChange"
 

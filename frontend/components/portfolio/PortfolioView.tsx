@@ -1,11 +1,11 @@
 "use client"
 
 import * as React from "react"
-import type { PortfolioResponse } from "app/portfolio/types"
 import { fetchPortfolio } from "app/portfolio/api"
+import type { PortfolioResponse } from "app/portfolio/types"
 import { AddressInput } from "components/portfolio/AddressInput"
-import { PortfolioSummary } from "components/portfolio/PortfolioSummary"
 import { CoinTable } from "components/portfolio/CoinTable"
+import { PortfolioSummary } from "components/portfolio/PortfolioSummary"
 import { SkeletonTable } from "components/portfolio/SkeletonTable"
 
 type State =
