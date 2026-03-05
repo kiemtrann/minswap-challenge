@@ -25,7 +25,7 @@ export function AddressInput({ onSearch, loading }: AddressInputProps) {
           Sui Wallet Address
         </Form.Label>
 
-        <div className="flex gap-3">
+        <div className="flex flex-col gap-3 sm:flex-row">
           <Form.Control asChild>
             <input
               id="wallet-address"
@@ -49,7 +49,8 @@ export function AddressInput({ onSearch, loading }: AddressInputProps) {
               id="lookup-btn"
               disabled={loading || !value.trim()}
               className={twMerge(
-                "flex min-w-[120px] items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200",
+                "flex w-full shrink-0 items-center justify-center gap-2 rounded-xl px-6 py-3 text-sm font-semibold transition-all duration-200",
+                "sm:w-auto sm:min-w-[120px]",
                 "bg-sky-500 text-white hover:bg-sky-400 active:scale-95",
                 "disabled:cursor-not-allowed disabled:opacity-40",
               )}
